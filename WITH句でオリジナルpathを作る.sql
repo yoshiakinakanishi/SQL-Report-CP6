@@ -49,14 +49,14 @@
 WITH
 shukei1 AS (
     SELECT
-        url
+        url -- *でも良い
         , substring(url from 'https?://([^/]*)') AS host
         , split_part(substring(url from '//[^/]+([^?#]+)'), '/', 2) AS path1
     FROM access_log
 )
 , shukei2 AS (
     SELECT
-        url
+        url -- *でも良い
         , CONCAT(host, '/', path1) AS new_url
     FROM shukei1
 )
