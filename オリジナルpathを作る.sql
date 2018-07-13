@@ -1,3 +1,4 @@
+
        stamp        | short_session | long_session |                                url                                 |             referrer
 ---------------------+---------------+--------------+--------------------------------------------------------------------+-----------------------------------
  2016-10-01 12:00:00 | 0CVKaz        | 1CwlSX       | http://www.example.com/?utm_source=google&utm_medium=search        | http://www.google.co.jp/xxx
