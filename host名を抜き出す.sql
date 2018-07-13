@@ -21,29 +21,32 @@
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
 
-                                url                                 |      path
---------------------------------------------------------------------+-----------------
- http://www.example.com/?utm_source=google&utm_medium=search        | www.example.com
- http://www.example.com/detail?id=1                                 | www.example.com
- http://www.example.com/list/cd                                     | www.example.com
- http://www.example.com/detail?id=1                                 | www.example.com
- http://www.example.com/list/newly                                  | www.example.com
- http://www.example.com/list/cd                                     | www.example.com
- http://www.example.com/                                            | www.example.com
- http://www.example.com/detail?id=2                                 | www.example.com
- http://www.example.com/                                            | www.example.com
- http://www.example.com/list/cd                                     | www.example.com
- http://www.example.com/list/dvd                                    | www.example.com
- http://www.example.com/detail?id=2                                 | www.example.com
- http://www.example.com/list/newly                                  | www.example.com
- http://www.example.com/                                            | www.example.com
- http://www.example.com/list/dvd?utm_source=yahoo&utm_medium=search | www.example.com
- http://www.example.com/detail?id=3                                 | www.example.com
- http://www.example.com/?utm_source=mynavi&utm_medium=affiliate     | www.example.com
- http://www.example.com/list/dvd                                    | www.example.com
- http://www.example.com/list/newly                                  | www.example.com
+                                url                                 |      host       |    path     | id
+--------------------------------------------------------------------+-----------------+-------------+----
+ http://www.example.com/?utm_source=google&utm_medium=search        | www.example.com | /           |
+ http://www.example.com/detail?id=1                                 | www.example.com | /detail     | 1
+ http://www.example.com/list/cd                                     | www.example.com | /list/cd    |
+ http://www.example.com/detail?id=1                                 | www.example.com | /detail     | 1
+ http://www.example.com/list/newly                                  | www.example.com | /list/newly |
+ http://www.example.com/list/cd                                     | www.example.com | /list/cd    |
+ http://www.example.com/                                            | www.example.com | /           |
+ http://www.example.com/detail?id=2                                 | www.example.com | /detail     | 2
+ http://www.example.com/                                            | www.example.com | /           |
+ http://www.example.com/list/cd                                     | www.example.com | /list/cd    |
+ http://www.example.com/list/dvd                                    | www.example.com | /list/dvd   |
+ http://www.example.com/detail?id=2                                 | www.example.com | /detail     | 2
+ http://www.example.com/list/newly                                  | www.example.com | /list/newly |
+ http://www.example.com/                                            | www.example.com | /           |
+ http://www.example.com/list/dvd?utm_source=yahoo&utm_medium=search | www.example.com | /list/dvd   |
+ http://www.example.com/detail?id=3                                 | www.example.com | /detail     | 3
+ http://www.example.com/?utm_source=mynavi&utm_medium=affiliate     | www.example.com | /           |
+ http://www.example.com/list/dvd                                    | www.example.com | /list/dvd   |
+ http://www.example.com/list/newly                                  | www.example.com | /list/newly |
 (19 行)
 
 SELECT
-substring(url from 'https?://([^/]*)') AS host
+url
+, substring(url from 'https?://([^/]*)') AS host
+, substring(url from '//[^/]+([^?#]+)') AS path
+, substring(url from 'id=([^&]*)') AS id
 FROM access_log;
