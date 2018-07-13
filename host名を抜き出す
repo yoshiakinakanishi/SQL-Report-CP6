@@ -20,3 +20,30 @@
  2016-10-03 14:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/dvd                                    | https://www.facebook.com/xxx
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
+
+      path
+-----------------
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+ www.example.com
+(19 行)
+
+SELECT
+substring(url from 'https?://([^/]*)') AS PATH
+FROM access_log;
