@@ -21,7 +21,7 @@
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
 
-      path
+      host
 -----------------
  www.example.com
  www.example.com
@@ -45,5 +45,5 @@
 (19 行)
 
 SELECT
-substring(url from 'https?://([^/]*)') AS PATH
+substring(url from 'https?://([^/]*)') AS host
 FROM access_log;
