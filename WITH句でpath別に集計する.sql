@@ -1,3 +1,4 @@
+
         stamp        | short_session | long_session |                                url                                 |             referrer
 ---------------------+---------------+--------------+--------------------------------------------------------------------+-----------------------------------
  2016-10-01 12:00:00 | 0CVKaz        | 1CwlSX       | http://www.example.com/?utm_source=google&utm_medium=search        | http://www.google.co.jp/xxx
@@ -22,13 +23,13 @@
 (19 行)
 
 
-    path     | uu | ss | pv
+    path     | ss | uu | pv
 -------------+----+----+----
- /           |  4 |  5 |  5
- /detail     |  3 |  5 |  5
+ /           |  5 |  4 |  5
+ /detail     |  5 |  3 |  5
  /list/cd    |  3 |  3 |  3
- /list/dvd   |  2 |  3 |  3
- /list/newly |  2 |  3 |  3
+ /list/dvd   |  3 |  2 |  3
+ /list/newly |  3 |  2 |  3
 (5 行)
 
 
@@ -46,21 +47,3 @@ SELECT
     , COUNT(*) AS PV
 FROM access_log_with_path
 GROUP BY path;
-
---------------------------------------------------------------
-参考まで
-
-    path
--------------
- /list/newly
- /list/dvd
- /
- /detail
- /list/cd
-(5 行)
-
-SELECT
-    substring(url from '//[^/]+([^?#]+)') AS path
-FROM access_log
-GROUP BY path;
-
