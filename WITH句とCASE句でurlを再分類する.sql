@@ -46,14 +46,15 @@ access_log_with_path as (
     SELECT
     *
     , CASE
-    WHEN path1 = 'list' THEN
-        CASE
-            WHEN path2 = 'newly' THEN 'newly_list'
-            ELSE 'category_list'
-        END
-        -- 上記以外は元のpathを採用
-        ELSE path
-    END AS path_name
+    　　 WHEN path1 = 'list' THEN
+        　  -- START --
+        　　 CASE
+             　WHEN path2 = 'newly' THEN 'newly_list'
+            　 ELSE 'category_list'
+        　　 END
+        　 -- END --
+        ELSE path -- 上記以外は元のpathを採用
+    　END AS path_name
     FROM access_log_with_split_path
 )
 
