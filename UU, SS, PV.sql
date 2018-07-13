@@ -1,3 +1,4 @@
+ページごとの訪問者数、訪問回数、PVを集計する
 
         stamp        | short_session | long_session |                                url                                 |             referrer
 ---------------------+---------------+--------------+--------------------------------------------------------------------+-----------------------------------
@@ -22,3 +23,30 @@
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
 
+     dt     | uu | ss | pv
+------------+----+----+----
+ 2016-10-01 |  4 |  5 |  8
+ 2016-10-02 |  4 |  5 |  7
+ 2016-10-03 |  3 |  3 |  4
+(3 行)
+
+
+GROUP BYの前をもってくるパターン（結果は同じ）
+
+SELECT 
+substring(stamp, 1, 10) AS dt
+, COUNT(DISTINCT long_session) AS uu
+, COUNT(DISTINCT short_session) AS ss
+, COUNT(*)as pv
+FROM access_log
+GROUP BY substring(stamp, 1, 10);
+
+GROUP BYの前をもってくるパターン（結果は同じ）
+
+SELECT 
+substring(stamp, 1, 10) AS dt
+, COUNT(DISTINCT long_session) AS uu
+, COUNT(DISTINCT short_session) AS ss
+, COUNT(*)as pv
+FROM access_log
+GROUP BY dt;
