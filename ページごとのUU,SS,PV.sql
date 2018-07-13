@@ -22,3 +22,24 @@
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
 
+                                url                                 | uu | ss | pv
+--------------------------------------------------------------------+----+----+----
+ http://www.example.com/                                            |  3 |  3 |  3
+ http://www.example.com/?utm_source=google&utm_medium=search        |  1 |  1 |  1
+ http://www.example.com/?utm_source=mynavi&utm_medium=affiliate     |  1 |  1 |  1
+ http://www.example.com/detail?id=1                                 |  2 |  2 |  2
+ http://www.example.com/detail?id=2                                 |  2 |  2 |  2
+ http://www.example.com/detail?id=3                                 |  1 |  1 |  1
+ http://www.example.com/list/cd                                     |  3 |  3 |  3
+ http://www.example.com/list/dvd                                    |  2 |  2 |  2
+ http://www.example.com/list/dvd?utm_source=yahoo&utm_medium=search |  1 |  1 |  1
+ http://www.example.com/list/newly                                  |  2 |  3 |  3
+(10 行)
+
+SELECT
+url 
+, COUNT(DISTINCT long_session) AS uu
+, COUNT(DISTINCT short_session) AS ss
+, COUNT(*)as pv
+FROM access_log
+GROUP BY url;
