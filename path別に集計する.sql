@@ -46,3 +46,20 @@ SELECT
     , COUNT(*) AS PV
 FROM access_log_with_path
 GROUP BY path;
+
+--------------------------------------------------------------
+
+    path
+-------------
+ /list/newly
+ /list/dvd
+ /
+ /detail
+ /list/cd
+(5 行)
+
+SELECT
+    substring(url from '//[^/]+([^?#]+)') AS path
+FROM access_log
+GROUP BY path;
+
