@@ -5,11 +5,11 @@
 
     path
 -------------
+ /           
+ /detail   
+ /list/cd    
+ /list/dvd  
  /list/newly
- /list/dvd
- /
- /detail
- /list/cd
 
 ------------------------------
    結果
