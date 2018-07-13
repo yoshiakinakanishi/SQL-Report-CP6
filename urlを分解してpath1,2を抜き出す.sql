@@ -21,31 +21,32 @@
  2016-10-03 15:00:00 | AAuoEU        | 6SN6DD       | http://www.example.com/list/newly                                  |
 (19 行)
 
-                                 url                                 | path1  | path2
---------------------------------------------------------------------+--------+-------
- http://www.example.com/?utm_source=google&utm_medium=search        |        |
- http://www.example.com/detail?id=1                                 | detail |
- http://www.example.com/list/cd                                     | list   | cd
- http://www.example.com/detail?id=1                                 | detail |
- http://www.example.com/list/newly                                  | list   | newly
- http://www.example.com/list/cd                                     | list   | cd
- http://www.example.com/                                            |        |
- http://www.example.com/detail?id=2                                 | detail |
- http://www.example.com/                                            |        |
- http://www.example.com/list/cd                                     | list   | cd
- http://www.example.com/list/dvd                                    | list   | dvd
- http://www.example.com/detail?id=2                                 | detail |
- http://www.example.com/list/newly                                  | list   | newly
- http://www.example.com/                                            |        |
- http://www.example.com/list/dvd?utm_source=yahoo&utm_medium=search | list   | dvd
- http://www.example.com/detail?id=3                                 | detail |
- http://www.example.com/?utm_source=mynavi&utm_medium=affiliate     |        |
- http://www.example.com/list/dvd                                    | list   | dvd
- http://www.example.com/list/newly                                  | list   | newly
+                                url                                 |      host       | path1  | path2
+--------------------------------------------------------------------+-----------------+--------+-------
+ http://www.example.com/?utm_source=google&utm_medium=search        | www.example.com |        |
+ http://www.example.com/detail?id=1                                 | www.example.com | detail |
+ http://www.example.com/list/cd                                     | www.example.com | list   | cd
+ http://www.example.com/detail?id=1                                 | www.example.com | detail |
+ http://www.example.com/list/newly                                  | www.example.com | list   | newly
+ http://www.example.com/list/cd                                     | www.example.com | list   | cd
+ http://www.example.com/                                            | www.example.com |        |
+ http://www.example.com/detail?id=2                                 | www.example.com | detail |
+ http://www.example.com/                                            | www.example.com |        |
+ http://www.example.com/list/cd                                     | www.example.com | list   | cd
+ http://www.example.com/list/dvd                                    | www.example.com | list   | dvd
+ http://www.example.com/detail?id=2                                 | www.example.com | detail |
+ http://www.example.com/list/newly                                  | www.example.com | list   | newly
+ http://www.example.com/                                            | www.example.com |        |
+ http://www.example.com/list/dvd?utm_source=yahoo&utm_medium=search | www.example.com | list   | dvd
+ http://www.example.com/detail?id=3                                 | www.example.com | detail |
+ http://www.example.com/?utm_source=mynavi&utm_medium=affiliate     | www.example.com |        |
+ http://www.example.com/list/dvd                                    | www.example.com | list   | dvd
+ http://www.example.com/list/newly                                  | www.example.com | list   | newly
 (19 行)
 
 SELECT
 url
+substring(url from 'https?://([^/]*)') AS host
 , split_part(substring(url from '//[^/]+([^?#]+)'), '/', 2) AS path1
 , split_part(substring(url from '//[^/]+([^?#]+)'), '/', 3) AS path2
 FROM access_log;
